@@ -127,6 +127,5 @@ int main(){
 
     printList();
     
-    countOfElements();
     return 0;
 }
