@@ -93,20 +93,40 @@ int main(){
     }
     
     printList();
+    printf("Where do u want to delete the node ? \n");
+    printf("Enter 1: To Delete node at the beginning  \n");
+    printf("Enter 2: To Delete node at the end \n");
+    printf("Enter 3 : To Delte node at the middle \n");
+	printf("Enter 4 : To Delete node at a position \n");
+	int indexToDelete;
+    scanf("%d",&indexToDelete);
+    if(indexToDelete==1)
+    	deleteIndex(0);
+    else if(indexToDelete==2)
+    	deleteIndex(n-1);
+    else if(indexToDelete==3)
+    	deleteIndex(n/2);
+    else if(indexToDelete==4){
+    	int posToDelete;
+		printf("Enter the positon to delete : ");
+    	scanf("%d",&posToDelete);
+    	deleteIndex(posToDelete-1);
+	}
+	else{
+		printf("Invalid input.");
+	}
     
-    //deleteIndex();
-    
-    int is_deleted;
-    int deleteNumber;
-    printf("Enter the number to be deleted from the list : ");
-    scanf("%d",&deleteNumber);
-    is_deleted=deleteFromList(deleteNumber,0);
-    if(is_deleted==1)
-        printf("Element deleted from the list.\n");
-    else
-        printf("Element is not found in the list.\n");
-    
+//    int is_deleted;
+//    int deleteNumber;
+//    printf("Enter the number to be deleted from the list : ");
+//    scanf("%d",&deleteNumber);
+//    is_deleted=deleteFromList(deleteNumber,0);
+//    if(is_deleted==1)
+//        printf("Element deleted from the list.\n");
+//    else
+//        printf("Element is not found in the list.\n");
+//    
     printList();
     
     return 0;
-}   
+} 
