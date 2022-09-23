@@ -2,42 +2,47 @@
 #include "stdlib.h"
 struct node{
     int data;
-    struct node *next;
+    struct node  *next;
 };
-struct node *head=NULL,*tail=NULL,*to_pop=NULL;
+struct node *head=NULL,*tail=NULL;
 void push(){
-    struct node *new_node=(struct node*) malloc(sizeof(struct node));
+    struct node *p=(struct node*) malloc(sizeof(struct node));
+    
     int n;
     printf("Enter the element to be added to the stack : ");
     scanf("%d",&n);
-    new_node->data=n;
-    to_pop=tail;
+    p->data=n;
     if(head==NULL){
-        head=new_node;
-        tail=new_node;
+        p->next=NULL;
+        tail=p;
+        head=p;
     }
     else{
-        tail->next=new_node;
-        new_node->next==NULL;
-        tail=new_node;
+        p->next=head;
+        head=p;
     }
 }
 void pop(){
-    to_pop->next=NULL;
+    if(head==NULL){
+        printf("########## Stack Underflow ##########");
+    }
+    struct node *del=(struct node*) malloc(sizeof(struct node));
+    del=head;
+    head=head->next;
+    //head->next=NULL;
+    free(del);
 }
 void printList(){
+    printf("Elements in the stack are : ");
     struct node *p=head;
-    if(p==NULL){
-        printf("There are no elements in the linked list.");
-    }
-    printf("Elements in the linked list are : ");
-    while (p!=NULL){
-        printf("%d ",p->data);
+    while(p!=NULL){
+        printf("%d-->",p->data);
         p=p->next;
+        if(p==NULL)
+            printf("NULL");
     }
     printf("\n");
 }
-
 int main(){
     int choice;
     while (1==1){
